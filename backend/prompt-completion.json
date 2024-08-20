@@ -1,0 +1,42 @@
+[
+    {
+        "prompt": "Show all students who are 15 years old.",
+        "completion": "SELECT name FROM students WHERE age = 15;"
+    },
+    {
+        "prompt": "Show the names of students enrolled in English.",
+        "completion": "SELECT s.name FROM students s JOIN enrollments e ON s.student_id = e.student_id JOIN subjects sub ON e.subject_id = sub.subject_id WHERE sub.subject_name = 'English';"
+    },
+    {
+        "prompt": "List the names and grades of students who are in grade 12.",
+        "completion": "SELECT name, grade_level FROM students WHERE grade_level = 12;"
+    },
+    {
+        "prompt": "Count the number of students in each grade level.",
+        "completion": "SELECT grade_level, COUNT(*) FROM students GROUP BY grade_level;"
+    },
+    {
+        "prompt": "List students who scored above 90 in Science.",
+        "completion": "SELECT s.name FROM students s JOIN exam_results er ON s.student_id = er.student_id JOIN subjects sub ON er.subject_id = sub.subject_id WHERE sub.subject_name = 'Science' AND er.score > 90;"
+    },
+    {
+        "prompt": "Show the names of students who took exams after 2023-01-01.",
+        "completion": "SELECT s.name FROM students s JOIN exam_results er ON s.student_id = er.student_id WHERE er.exam_date > '2023-01-01';"
+    },
+    {
+        "prompt": "List students who are in grade 11 and scored below 50 in Mathematics.",
+        "completion": "SELECT s.name FROM students s JOIN exam_results er ON s.student_id = er.student_id JOIN subjects sub ON er.subject_id = sub.subject_id WHERE s.grade_level = 11 AND sub.subject_name = 'Mathematics' AND er.score < 50;"
+    },
+    {
+        "prompt": "Show names of students who are in grade 10 and have taken both Science and English.",
+        "completion": "SELECT s.name FROM students s JOIN enrollments e1 ON s.student_id = e1.student_id JOIN subjects sub1 ON e1.subject_id = sub1.subject_id JOIN enrollments e2 ON s.student_id = e2.student_id JOIN subjects sub2 ON e2.subject_id = sub2.subject_id WHERE s.grade_level = 10 AND sub1.subject_name = 'Science' AND sub2.subject_name = 'English';"
+    },
+    {
+        "prompt": "List the names of students who have never scored below 60 in any exam.",
+        "completion": "SELECT name FROM students WHERE student_id NOT IN (SELECT student_id FROM exam_results WHERE score < 60);"
+    },
+    {
+        "prompt": "Show the average score of each student in Mathematics.",
+        "completion": "SELECT s.name, AVG(er.score) AS average_score FROM students s JOIN exam_results er ON s.student_id = er.student_id JOIN subjects sub ON er.subject_id = sub.subject_id WHERE sub.subject_name = 'Mathematics' GROUP BY s.name;"
+    }
+]

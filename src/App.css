@@ -1,0 +1,73 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+.chatbox {
+  width: 80%;
+  height: 70vh;
+  background: white;
+  border: 1px solid #ddd;
+  overflow-y: scroll;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.message {
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.message.user {
+  background-color: #cce5ff;
+  align-self: flex-end;
+}
+
+.message.bot {
+  background-color: #e2e2e2;
+  align-self: flex-start;
+}
+
+.loading {
+  text-align: center;
+  color: #aaa;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.inputbox {
+  display: flex;
+  width: 80%;
+}
+
+.inputbox input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px 0 0 5px;
+}
+
+.inputbox button {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputbox button:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
